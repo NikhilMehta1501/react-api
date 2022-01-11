@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import { Container, Box } from '@mui/material';
+import UserList from './Components/UserList';
+import CurrentUser from './Components/CurrentUser';
 
 function App() {
+
+  const [userList, setUserList] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Box className='main-box'>
+        <UserList 
+          setUserList={setUserList}
+          userList={userList}
+          setCurrentUser={setCurrentUser}
+        />
+        <CurrentUser currentUser={currentUser}/>
+      </Box>
     </div>
   );
 }
